@@ -12,8 +12,6 @@ export class AuthService {
 
   getToken(): Observable<any> {
 
-    // 'Basic d2ViZmctdGVzdDpXVzU4WUpqODlsdFI0M0Ny'
-
     const headersToken = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
