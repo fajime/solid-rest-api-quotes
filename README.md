@@ -1,8 +1,8 @@
 # WebFinancialApp
 
-Este proyecto está generado con [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+## Es necesario tener instalado Node.js y Angular CLI para ejecutar la prueba en una máquina local
 
-## Es necesario tener instalado Node.js para ejecutar la prueba en una máquina local
+Este proyecto está generado con [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
 ## Ver ejemplo publicado en la siguiente url https://fajime.github.io/
 
