@@ -18,6 +18,6 @@ Instalar las dependencias
 
 Arrancar la aplicacion (dentro del directorio root de la aplicación ejecutar el siguiente comando)
 
-### `npx ng serve`
+### `ng serve`
 
 Abrir [http://localhost:4200](http://localhost:4200) en el navegador para ver la aplicación.
