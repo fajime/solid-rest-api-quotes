@@ -3,9 +3,16 @@
   <div *ngIf="!load">
     <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"/>
   </div>
+
+  <div style="text-align:center" *ngIf="error">
+    <div class="alert alert-danger" role="alert">
+      {{ this.errorMessage }}
+    </div>
+    <button (click)="reload()" type="button" class="btn btn-warning">Reload...</button>
+  </div>
 </div>
 
-<table *ngIf="load" class="table table-striped m-5" style="max-width: 90%">
+<table *ngIf="load && !error" class="table table-striped m-5" style="max-width: 90%">
   <tbody class="d-block-flex p-2">
     <tr>
       <td>Last</td>

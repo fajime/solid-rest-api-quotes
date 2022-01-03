@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { environment } from '../environments/environment';
+import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Injectable({
@@ -8,30 +9,32 @@ import { switchMap } from 'rxjs/operators';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getToken(): Observable<any> {
+
+    const { API_URL, fields, CLIENT_ID, CLIENT_PASSWORD, username, password } = environment;
 
     const headersToken = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + btoa('webfg-test:WW58YJj89ltR43Cr')
+        'Authorization': 'Basic ' + btoa(`${CLIENT_ID}:${CLIENT_PASSWORD}`)
       })
     };
 
     let params: HttpParams = new HttpParams();
     params = params.set('grant_type', 'password');
-    params = params.set('username', 'test001');
-    params = params.set('password', 'ryby3NTyKduAMcvZ');
+    params = params.set('username', username);
+    params = params.set('password', password);
 
-    return this.http.post<any>('https://integra1.solutions.webfg.ch/restweb/oauth/token', params, headersToken ).pipe(
+    return this.http.post(`${API_URL}/oauth/token`, params, headersToken ).pipe(
       switchMap( response => {
         const headersData = {
           headers: new HttpHeaders({
             'Authorization': 'Bearer ' + response['access_token']
           })
         };
-        return this.http.get<any>('https://integra1.solutions.webfg.ch/restweb/quotes/2970161-1058-814?fields= LVAL_NORM,CLOSE_ADJ_NORM,NC2_PR_NORM,NC2_NORM,VOL,TUR,PY_CLOSE,YTD_PR_NORM', headersData);
+        return this.http.get(`${API_URL}/quotes/2970161-1058-814?fields=${fields}`, headersData);
       })
     );
   }
