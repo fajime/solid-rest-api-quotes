@@ -1,4 +1,4 @@
-# WebFinancialApp
+# App
 
 ## Es necesario tener instalado Node.js y Angular CLI para ejecutar la prueba en una máquina local
 
